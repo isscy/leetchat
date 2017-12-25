@@ -1,7 +1,6 @@
 package cn.ff.leetchat.auth.entity;
 
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.json.JSONObject;
 
 /**
@@ -9,7 +8,7 @@ import org.json.JSONObject;
  */
 public class JSONResult {
 	public static String fillResultString(Integer status, String message, Object result){
-		JSONPObject jsonpObject = new JSONPObject(){{
+		JSONObject jsonpObject = new JSONObject(){{
 			put("status", status);
 			put("message", message);
 			put("result", result);

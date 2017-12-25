@@ -32,10 +32,10 @@ public class TokenAuthenticationService {
 	public static void addAuthentication(HttpServletResponse response, String username){
 		//生成jwt
 		String jwt = Jwts.builder()
-				.claim("authorities", "ROLE_ADMIN")//保存权限（角色）
+				.claim("authorities", "ROLE_ADMIN,ROLE_ADMIN")//保存权限（角色）
 				.setSubject(username)//用户名写入标题
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
-				.signWith(SignatureAlgorithm.ES512, SECRET)// 签名设置
+				.signWith(SignatureAlgorithm.HS512, SECRET)// 签名设置
 				.compact();
 		// 将jwt写入body
 		try {
