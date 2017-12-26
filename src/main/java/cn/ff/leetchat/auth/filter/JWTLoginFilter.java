@@ -17,6 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 登陆
+ */
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 
 	public JWTLoginFilter(String url, AuthenticationManager authManager) {

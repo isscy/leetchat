@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello socket</title>
+</head>
+<body>
+
+    <script>
+
+        let url = "ws://" + window.location.host + "/socket";
+        let scok = new WebSocket(url);
+
+        scok.onopen = function () {
+            console.log("Opening");
+        }
+        scok.onmessage = function(e){
+            console.log("Received message" + e.data);
+            setTimeout(function () {
+                sayHi()
+            },2000);
+        }
+        function sayHi(){
+            sock.send("Hi");
+            console.log("send to server over!")
+        }
+
+    </script>
+
+</body>
+</html>
