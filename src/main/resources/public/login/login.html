@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+
+</head>
+<body>
+
+    username：<input type="text" id="username">
+    password：<input type="password" id="password">
+    <button type="button" onclick="sign()">sign in</button>
+
+
+    <script src="js/jquery.js"></script>
+    <script>
+        function sign() {
+            let username = $("#username").val();
+            let password = $("#password").val();
+            let obj = {
+                "username":username,
+                "password":password
+            }
+            $.ajax({
+                url:"/login",
+                type:"post",
+                contentType:"application/json",
+                data:JSON.stringify(obj),
+                success:function(e){
+                    if(e.status == 0){
+
+                        $.ajax({
+                           url:"/userInfo",
+                           type:"post",
+                           beforeSend:function (request) {
+                               request.setRequestHeader("Authorization", "Bearer " + e.result)
+                           },
+                            success:function (e) {
+                                console.log(e)
+                            }
+                        });
+
+                    } else {
+
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

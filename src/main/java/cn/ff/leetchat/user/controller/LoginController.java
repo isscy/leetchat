@@ -11,4 +11,5 @@ public class LoginController {
 	public String user(){
 		return "ffff";
 	}
+
 }
