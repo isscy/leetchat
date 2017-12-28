@@ -30,8 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			.authorizeRequests()
 			.antMatchers(
-					HttpMethod.GET,
+					//HttpMethod.GET,
 					"/",
+					"/socket",
+					"/hello",
 					"/*.html",
 					"/favicon.ico",
 					"/**/*.html",

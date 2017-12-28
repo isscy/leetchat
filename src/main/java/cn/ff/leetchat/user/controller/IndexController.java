@@ -10,4 +10,9 @@ public class IndexController {
 	public String index(){
 		return "login/login";
 	}
+
+	@GetMapping("/hello")
+	public String hello(){
+		return "socket/hello";
+	}
 }
