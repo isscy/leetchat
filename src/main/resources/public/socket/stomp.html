@@ -5,12 +5,9 @@
     <title>stomp</title>
 </head>
 <body>
-
     <script>
-
         var url = "ws://" + window.location.host + "/stomp/";
         var scok = new WebSocket(url);
-
         scok.onopen = function () {
             console.log("Opening");
             sayHi();
@@ -25,7 +22,6 @@
             scok.send("Hi");
             console.log("send to server over!")
         }
-
 
     </script>
 </body>
