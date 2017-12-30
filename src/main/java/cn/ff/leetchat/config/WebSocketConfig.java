@@ -21,8 +21,8 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		//消息代理处理这两个前缀的信息
-		registry.enableSimpleBroker("/queue", "/topic")
-				.
+		registry.enableSimpleBroker("/queue", "/topic");
+
 
 
 		// 以应用程序为目的地的消息会直接路由到带有MessageMapping的注解的控制权方法中。而发送到代理上的消息，
