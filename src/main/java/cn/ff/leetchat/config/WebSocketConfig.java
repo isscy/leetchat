@@ -6,6 +6,7 @@ import org.springframework.web.socket.config.annotation.AbstractWebSocketMessage
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
+
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
@@ -21,7 +22,9 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		//消息代理处理这两个前缀的信息
-		registry.enableSimpleBroker("/queue", "/topic");
+		//registry.enableSimpleBroker("/queue", "/topic");
+
+		registry.enableStompBrokerRelay("/topic", "/queue");
 
 
 

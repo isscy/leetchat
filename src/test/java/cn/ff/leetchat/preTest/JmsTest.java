@@ -20,6 +20,7 @@ public class JmsTest {
 	@Autowired
 	private Queue queue;
 
+	
 	@Test
 	public void contextLoads() throws InterruptedException {
 		Destination destination = new ActiveMQQueue("mytest.queue");
