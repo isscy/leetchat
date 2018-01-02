@@ -1,19 +1,16 @@
 package cn.ff.leetchat.config;
 
-import org.apache.activemq.broker.BrokerService;
-import org.apache.activemq.broker.jmx.ManagementContext;
-import org.apache.activemq.command.ActiveMQDestination;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
-import org.apache.activemq.command.ActiveMQTopic;
+import org.apache.activemq.pool.PooledConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jms.annotation.EnableJms;
 
+import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
-import java.util.Collections;
 
 @Configuration
-@EnableJms
+//@EnableJms
 public class JmsConfiguration {
 
 //	/**
@@ -58,6 +55,14 @@ public class JmsConfiguration {
 //		converter.setTypeIdPropertyName("_type");
 //		return converter;
 //	}
+
+	@Bean
+	ConnectionFactory jmsConnectionFactory() {
+		PooledConnectionFactory pool = new PooledConnectionFactory();
+		pool.setConnectionFactory(new ActiveMQConnectionFactory("stomp://localhost:61613"));
+		return pool;
+
+	}
 
 	@Bean
 	public Queue queue() {
