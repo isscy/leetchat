@@ -1,6 +1,7 @@
 package cn.ff.leetchat.preTest;
 
 import cn.ff.leetchat.jms.service.Producer;
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.transport.stomp.Stomp;
 import org.apache.activemq.transport.stomp.StompConnection;
@@ -11,8 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.jms.Destination;
-import javax.jms.Queue;
+import javax.jms.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -65,6 +65,15 @@ public class JmsTest {
 		connection.commit("tx2");
 
 		connection.disconnect();
+	}
+
+
+
+	public void test2() throws JMSException {
+		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("test","123","tcp://localhost:61616");
+		Connection connection = connectionFactory.createConnection();
+		connection.start();
+		Session session = connection.createSession();
 	}
 
 

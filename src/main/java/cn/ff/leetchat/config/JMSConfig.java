@@ -3,7 +3,6 @@ package cn.ff.leetchat.config;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.pool.PooledConnectionFactory;
 import org.apache.camel.builder.RouteBuilder;
-import org.springframework.context.annotation.Bean;
 
 import javax.jms.ConnectionFactory;
 
@@ -12,7 +11,7 @@ public class JMSConfig {
 
 
 
-	@Bean
+	//@Bean
 	ConnectionFactory jmsConnectionFactory() {
 		// use a pool for ActiveMQ connections
 		PooledConnectionFactory pool = new PooledConnectionFactory();
@@ -20,7 +19,7 @@ public class JMSConfig {
 		return pool;
 	}
 
-	@Bean
+	//@Bean
 	RouteBuilder myRouter() {
 		return new RouteBuilder() {
 

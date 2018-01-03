@@ -3,13 +3,11 @@ package cn.ff.leetchat.config;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.pool.PooledConnectionFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
 
-@Configuration
+//@Configuration
 //@EnableJms
 public class JmsConfiguration {
 
@@ -56,7 +54,7 @@ public class JmsConfiguration {
 //		return converter;
 //	}
 
-	@Bean
+	//@Bean
 	ConnectionFactory jmsConnectionFactory() {
 		PooledConnectionFactory pool = new PooledConnectionFactory();
 		pool.setConnectionFactory(new ActiveMQConnectionFactory("stomp://localhost:61613"));
@@ -64,7 +62,7 @@ public class JmsConfiguration {
 
 	}
 
-	@Bean
+	//@Bean
 	public Queue queue() {
 		return new ActiveMQQueue("mytest.queue") ;
 	}
