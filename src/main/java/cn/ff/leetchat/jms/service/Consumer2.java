@@ -2,9 +2,8 @@ package cn.ff.leetchat.jms.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class Consumer2 {
 	private final static Logger logger = LoggerFactory.getLogger(Consumer2.class);
 

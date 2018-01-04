@@ -15,7 +15,7 @@ public class Producer {
 	private JmsMessagingTemplate jmsTemplate;
 	@Autowired
 	private Queue queue;
-	// 发送消息，destination是发送到的队列，message是待发送的消息
+	 //发送消息，destination是发送到的队列，message是待发送的消息
 	public void sendMessage(Destination destination, final String message){
 		jmsTemplate.convertAndSend(queue, message);
 	}

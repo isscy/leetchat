@@ -39,7 +39,7 @@ public class JmsTest {
 		connection.open("localhost", 61613);
 
 		connection.connect("test", "123");
-		StompFrame connect = connection.receive();
+		StompFrame connect = connection.receive(500000);
 
 		if(!connect.getAction().equals(Stomp.Responses.CONNECTED)) {
 			throw new Exception ("Not connected");
@@ -54,7 +54,7 @@ public class JmsTest {
 
 		connection.begin("tx2");
 
-		StompFrame message = connection.receive();
+		StompFrame message = connection.receive(5000);
 		System.out.println(message.getBody());
 		connection.ack(message, "tx2");
 
@@ -68,13 +68,13 @@ public class JmsTest {
 	}
 
 
-
+/*
 	public void test2() throws JMSException {
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("test","123","tcp://localhost:61616");
 		Connection connection = connectionFactory.createConnection();
 		connection.start();
 		Session session = connection.createSession();
-	}
+	}*/
 
 
 
