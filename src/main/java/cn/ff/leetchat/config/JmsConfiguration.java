@@ -6,6 +6,7 @@ import org.apache.activemq.pool.PooledConnectionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Queue;
@@ -68,6 +69,12 @@ public class JmsConfiguration {
 	@Bean
 	public Queue queue() {
 		return new ActiveMQQueue("mytest.queue") ;
+	}
+
+	@Transactional
+	public void displayMail(Mail mail) {
+		System.out.println("从ActiveMQ取出一条消息：");
+		System.out.println(mail.toString());
 	}
 
 
