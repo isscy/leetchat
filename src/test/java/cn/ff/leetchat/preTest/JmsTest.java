@@ -1,7 +1,6 @@
 package cn.ff.leetchat.preTest;
 
-import cn.ff.leetchat.jms.service.Producer;
-import org.apache.activemq.ActiveMQConnectionFactory;
+import cn.ff.leetchat.jms.service.impl.ProducerImpl;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.transport.stomp.Stomp;
 import org.apache.activemq.transport.stomp.StompConnection;
@@ -19,19 +18,19 @@ import javax.jms.*;
 public class JmsTest {
 
 	@Autowired
-	private Producer producer;
+	private ProducerImpl producer;
 	@Autowired
 	private Queue queue;
 
 
-	@Test
-	public void contextLoads() throws InterruptedException {
-		Destination destination = new ActiveMQQueue("mytest.queue");
-
-		for(int i=0; i<100; i++){
-			producer.sendMessage(queue, "myname is chhliu!!!");
-		}
-	}
+//	@Test
+//	public void contextLoads() throws InterruptedException {
+//		Destination destination = new ActiveMQQueue("mytest.queue");
+//
+//		for(int i=0; i<100; i++){
+//			producer.sendMessage(queue, "myname is chhliu!!!");
+//		}
+//	}
 
 	@Test
 	public void tt() throws Exception {
