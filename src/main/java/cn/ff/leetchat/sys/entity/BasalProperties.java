@@ -17,3 +17,4 @@ public class BasalProperties {
 		this.active = active;
 	}
 }
+
