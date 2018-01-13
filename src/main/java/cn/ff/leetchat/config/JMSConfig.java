@@ -30,7 +30,7 @@ public class JMSConfig {
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		PooledConnectionFactory pool = new PooledConnectionFactory();
-		pool.setConnectionFactory(new ActiveMQConnectionFactory(basalProperties.getActive().getBrokerUrl()));
+		pool.setConnectionFactory(new ActiveMQConnectionFactory(basalProperties.getActivemq().getBrokerUrl()));
 		// TODO 用户名密码
 		return pool;
 
@@ -64,13 +64,13 @@ public class JMSConfig {
 		jmsTemplate.setPubSubDomain(true);//订阅模式
 		return jmsTemplate;
 	}
-
+/*
 	@Bean
 	public void mailListener1(){
 
 	}
 
-
+*/
 
 
 
