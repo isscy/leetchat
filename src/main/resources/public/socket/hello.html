@@ -2,31 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>hello socket</title>
+    <title>stomp</title>
 </head>
 <body>
+<script>
+    var url = "ws://" + window.location.host + "/hello";
+    var scok = new WebSocket(url);
+    scok.onopen = function () {
+        console.log("Opening");
+        sayHi();
+    }
+    scok.onmessage = function(e){
+        console.log("Received message" + e.data);
+        setTimeout(function () {
+            sayHi()
+        },2000);
+    }
+    function sayHi(){
+        scok.send("Hi");
+        console.log("send to server over!")
+    }
 
-    <script>
-
-        var url = "ws://" + window.location.host + "/socket";
-        var scok = new WebSocket(url);
-
-        scok.onopen = function () {
-            console.log("Opening");
-            sayHi();
-        }
-        scok.onmessage = function(e){
-            console.log("Received message" + e.data);
-            setTimeout(function () {
-                sayHi()
-            },2000);
-        }
-        function sayHi(){
-            scok.send("Hi");
-            console.log("send to server over!")
-        }
-
-    </script>
-
+</script>
 </body>
 </html>

@@ -24,7 +24,8 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
 		//消息代理处理这两个前缀的信息
 		//registry.enableSimpleBroker("/queue", "/topic");
 
-		//registry.enableStompBrokerRelay("/topic", "/queue");
+
+		registry.enableStompBrokerRelay("/topic", "/queue");
 
 
 

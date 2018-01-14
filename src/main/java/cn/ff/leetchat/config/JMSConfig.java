@@ -30,7 +30,7 @@ public class JMSConfig {
 	@Bean
 	public ConnectionFactory connectionFactory() {
 		PooledConnectionFactory pool = new PooledConnectionFactory();
-		pool.setConnectionFactory(new ActiveMQConnectionFactory(basalProperties.getActivemq().getBrokerUrl()));
+		pool.setConnectionFactory(new ActiveMQConnectionFactory(basalProperties.getActivemq().getUser(), basalProperties.getActivemq().getPassword(), basalProperties.getActivemq().getBrokerUrl()));
 		// TODO 用户名密码
 		return pool;
 
