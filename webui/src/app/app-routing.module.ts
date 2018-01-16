@@ -14,12 +14,27 @@ const routes : Routes = [
 
   //TODO 新建home组件 把除了登陆登出都当成他的子组件
   {path:'', redirectTo:'/dashboard', pathMatch:'full'},
+
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate:[AuthGuard],
+    children:[
+      { path: '', redirectTo: '/home/dashboard/order', pathMatch: 'full', data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}] },  // Default path (if no deep path is specified for home component like webui/home then it will by default show ProductsComponent )
+      { path: 'dashboard', component: DashboardComponent, data: [{selectedHeaderItemIndex:0, selectedSubNavItemIndex:-1}],
+
+      },
+      { path:'setting'    , component: SettingComponent, data:[{selectedHeaderItemIndex:1, selectedSubNavItemIndex:-1}]  },
+    ]
+  },
+
+
   {path:'dashboard', component:DashboardComponent},
 
-  /*
+
   { path: 'login' , component: LoginComponent },
   { path: 'logout', component: LogoutComponent  },
-  */
+
 
   { path: '**'    , component: PageNotFoundComponent }
 

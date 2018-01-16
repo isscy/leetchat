@@ -12,9 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
+// component
+import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {PageNotFoundComponent} from './pages/404/page-not-found.component';
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    DashboardComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
