@@ -1,9 +1,9 @@
-<div class="no-margin">  <!-- class="main-container" will create fixed height container -->
+<div class="no-margin">
 
   <!--Alert -->
   <div *ngIf="showAppAlert" class="alert alert-app-level ">
     <button type="button" class="close" aria-label="Close" (click)="closeAppAlert()">
-      <clr-icon aria-hidden="true" shape="close"></clr-icon>
+      <!--<clr-icon aria-hidden="true" shape="close"></clr-icon>-->
     </button>
     <div class="alert-item">
       <div class="alert-text">
@@ -18,7 +18,9 @@
   <!-- Main App Header -->
   <header class="header header-2">
     <div class="branding">
-      <div style="width:40px;margin-right:10px;"><s-logo></s-logo></div>
+      <div style="width:40px;margin-right:10px;">
+
+      </div>
       <!-- clr-icon shape="target" class="is-solid is-inverse"></clr-icon -->
       <span class="title">SprinGular</span>
     </div>
@@ -27,7 +29,9 @@
     </div>
     <div class="header-actions">
       <label style="line-height: 60px;"> {{userName}}</label>
-      <a [routerLink]="'/logout'" class="nav-link nav-text"> <clr-icon shape="power"></clr-icon></a>
+      <a [routerLink]="'/logout'" class="nav-link nav-text">
+        <!--<clr-icon shape="power"></clr-icon>-->
+      </a>
     </div>
   </header>
 

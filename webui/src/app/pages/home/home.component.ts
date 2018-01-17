@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation, ViewChild, OnInit } from '@angular/core';
 import { Router,ActivatedRoute, NavigationEnd } from '@angular/router';
 
-import { LogoComponent  } from './components/logo/logo.component';
-import { LoginService   } from './services/api/login.service';
-import { UserInfoService} from './services/user-info.service';
+//import { LogoComponent  } from './components/logo/logo.component';
+import { LoginService   } from '../../services/api/login.service';
+import { UserService} from '../../services/user.service';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
@@ -45,7 +45,7 @@ export class HomeComponent   {
     private router:Router,
     private activeRoute:ActivatedRoute,
     private loginService:LoginService,
-    private userInfoService:UserInfoService
+    private userService:UserService
   ) {
     // This block is to retrieve the data from the routes (routes are defined in app-routing.module.ts)
     router.events
@@ -61,7 +61,7 @@ export class HomeComponent   {
         this.selectedHeaderItemIndex = data[0]?data[0].selectedHeaderItemIndex:-1;
         this.selectedSubNavItemIndex = data[0]?data[0].selectedSubNavItemIndex:-1;
       });
-    this.userName = this.userInfoService.getUserName();
+    this.userName = this.userService.getUserName();
 
   }
 

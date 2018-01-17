@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Observable,Subject } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { UserInfoService, LoginInfoInStorage} from '../user-info.service';
+import { UserService, LoginInfo} from '../user.service';
 import { ApiRequestService } from './api-request.service';
 
 export interface LoginRequestParam{
@@ -15,10 +15,10 @@ export interface LoginRequestParam{
 @Injectable()
 export class LoginService {
 
-  public landingPage:string = "/home/dashboard/order";
+  public guidePage:string = "/home/dashboard";
   constructor(
     private router:Router,
-    private userInfoService: UserInfoService,
+    private userService: UserService,
     private apiRequest: ApiRequestService
   ) {}
 
@@ -31,7 +31,7 @@ export class LoginService {
       "password": password,
     }
     let loginDataSubject:Subject<any> = new Subject<any>(); // Will use this subject to emit data that we want after ajax login attempt
-    let loginInfoReturn:LoginInfoInStorage; // Object that we want to send back to Login Page
+    let loginInfoReturn:LoginInfo; // Object that we want to send back to Login Page
     this.apiRequest.post('session', bodyData)
       .subscribe(jsonResp => {
         if (jsonResp !== undefined && jsonResp !== null && jsonResp.operationStatus === "SUCCESS"){
@@ -39,24 +39,23 @@ export class LoginService {
           loginInfoReturn = {
             "success"    : true,
             "message"    : jsonResp.operationMessage,
-            "landingPage": this.landingPage,
+            "guidePage": this.guidePage,
             "user"       : {
-              "userId"     : jsonResp.item.userId,
-              "email"      : jsonResp.item.emailAddress,
-              "displayName": jsonResp.item.firstName + " " + jsonResp.item.lastName,
+              "id"     : jsonResp.item.userId,
+              "username"      : jsonResp.item.emailAddress,
               "token"      : jsonResp.item.token,
             }
           };
 
           // store username and jwt token in session storage to keep user logged in between page refreshes
-          this.userInfoService.storeUserInfo(JSON.stringify(loginInfoReturn.user));
+          this.userService.saveUserInfo(JSON.stringify(loginInfoReturn.user));
         }
         else {
           //Create a faliure object that we want to send back to login page
           loginInfoReturn = {
             "success":false,
             "message":jsonResp.msgDesc,
-            "landingPage":"/login"
+            "guidePage":"/login"
           };
         }
         loginDataSubject.next(loginInfoReturn);
@@ -67,7 +66,7 @@ export class LoginService {
 
   logout(navigatetoLogout=true): void {
     // clear token remove user from local storage to log user out
-    this.userInfoService.removeUserInfo();
+    this.userService.removeUserInfo();
     if(navigatetoLogout){
       this.router.navigate(["logout"]);
     }
