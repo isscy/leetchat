@@ -25,7 +25,8 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer{
 		//registry.enableSimpleBroker("/queue", "/topic");
 
 
-		registry.enableStompBrokerRelay("/topic", "/queue");
+		registry.enableStompBrokerRelay("/topic", "/queue").setRelayHost("127.0.0.1")
+				.setSystemLogin("test").setSystemPasscode("123");
 
 
 
