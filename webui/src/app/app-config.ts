@@ -12,7 +12,7 @@ export class AppConfig {
   public dateFormat     = { year:'numeric', month: 'short', day: 'numeric'};
 
   // API Related configs
-  public apiPort:string = "9119";
+  public apiPort:string = "8888";
   public apiProtocol:string;
   public apiHostName:string;
   public baseApiPath:string;

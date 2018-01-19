@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/api/login.service';
 import { Router } from '@angular/router';
 
+import { Headers, Http } from '@angular/http';
+
+
 @Component({
   selector   : 's-login-pg',
   templateUrl: './login.component.html',
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+
     this.loginService.getToken(this.model.username, this.model.password)
       .subscribe(resp => {
           if (resp.user === undefined || resp.user.token === undefined || resp.user.token === "INVALID" ){
@@ -50,6 +54,8 @@ export class LoginComponent implements OnInit {
   onSignUp(){
     this.router.navigate(['signup']);
   }
+
+
 
 
 }
