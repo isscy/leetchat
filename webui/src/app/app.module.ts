@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 
 // 第三方modules
@@ -41,6 +42,7 @@ import {ApiRequestService} from './services/api/api-request.service';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    HttpModule,
     AppRoutingModule
   ],
   providers: [

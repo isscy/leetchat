@@ -41,7 +41,14 @@ export class ApiRequestService {
 
   post(url:string, body:Object):Observable<any>{
     let me = this;
-    return this.http.post(this.appConfig.baseApiPath + url, JSON.stringify(body), { headers:this.getHeaders()})
+    //let headers = this.getHeaders();
+
+
+    var config = {
+      headers: new HttpHeaders().set('Content-Type', 'application/json')
+    };
+
+    return this.http.post(this.appConfig.baseApiPath + url, JSON.stringify(body), config)
       .catch(function(error:any){
         if (error.status === 401){
           me.router.navigate(['/logout']);
