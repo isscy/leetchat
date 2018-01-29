@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 
 // 第三方modules
@@ -43,7 +45,9 @@ import {ApiRequestService} from './services/api/api-request.service';
     FormsModule,
     HttpClientModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgZorroAntdModule.forRoot()
   ],
   providers: [
     AppConfig,

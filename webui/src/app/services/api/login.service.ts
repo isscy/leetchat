@@ -45,41 +45,15 @@ export class LoginService {
 
 
   getToken(username:string, password:string): Observable<any> {
-    let me = this;
-
-    let bodyData:LoginRequestParam = {
+    let body:LoginRequestParam = {
       "username": username,
       "password": password,
     }
-    let loginDataSubject:Subject<any> = new Subject<any>(); // Will use this subject to emit data that we want after ajax login attempt
-    let loginInfoReturn:LoginInfo; // Object that we want to send back to Login Page
-
-    this.http.post('http://localhost:8888/login', bodyData, {
-      headers: new HttpHeaders().set('Content-Type', 'application/json')
-    }).subscribe(jsonResp => {
-      console.log(jsonResp);
-      loginInfoReturn = {
-        "success"    : true,
-        "message"    : '',
-        "guidePage": this.guidePage,
-        "user"       : {
-          "id"     : 'a',
-          "username"      : 'b',
-          "token"      : 'c',
-        }
-      };
-
-      // store username and jwt token in session storage to keep user logged in between page refreshes
-      //this.userService.saveUserInfo(JSON.stringify(loginInfoReturn.user));
-      loginDataSubject.next(loginInfoReturn);
-    });
-
-
-    /*
-    this.apiRequest.post('login', bodyData)
+    let loginDataSubject:Subject<any> = new Subject<any>(); //Subject是一个可观察的事件流中的生产者
+    let loginInfoReturn:LoginInfo;
+    this.apiRequest.post('/login', body)
       .subscribe(jsonResp => {
         if (jsonResp !== undefined && jsonResp !== null && jsonResp.operationStatus === "SUCCESS"){
-          //Create a success object that we want to send back to login page
           loginInfoReturn = {
             "success"    : true,
             "message"    : jsonResp.operationMessage,
@@ -90,12 +64,9 @@ export class LoginService {
               "token"      : jsonResp.item.token,
             }
           };
-
-          // store username and jwt token in session storage to keep user logged in between page refreshes
           this.userService.saveUserInfo(JSON.stringify(loginInfoReturn.user));
         }
         else {
-          //Create a faliure object that we want to send back to login page
           loginInfoReturn = {
             "success":false,
             "message":jsonResp.msgDesc,
@@ -103,8 +74,7 @@ export class LoginService {
           };
         }
         loginDataSubject.next(loginInfoReturn);
-      });*/
-
+      });
     return loginDataSubject;
   }
 

@@ -25,9 +25,6 @@ export class LoginComponent implements OnInit {
 
   login() {
 
-    this.loginService.test(this.model.username, this.model.password).then();
-    /*
-
     this.loginService.getToken(this.model.username, this.model.password)
       .subscribe(resp => {
           if (resp.user === undefined || resp.user.token === undefined || resp.user.token === "INVALID" ){
@@ -51,7 +48,7 @@ export class LoginComponent implements OnInit {
               this.errMsg = 'Server Error';
           }
         }
-      );*/
+      );
   }
 
   onSignUp(){
